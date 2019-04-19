@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"      
+ "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+
+<mapper namespace="com.yulin.ems.dao.EmpDao">
+	<select id="findAll" resultType="com.yulin.ems.entity.Emp">
+		select * from emp
+	</select>
+	
+	<insert id="addEmp" parameterType="com.yulin.ems.entity.Emp">
+		insert into emp 
+		values(#{empId},#{empName},#{salary,jdbcType=DOUBLE},#{job,jdbcType=VARCHAR},#{dept_id})
+	</insert>
+	<delete id="deleteEmp" parameterType="string">
+		delete from emp where empid=#{empid}
+	</delete>
+	
+	<update id="updateEmp" parameterType="com.yulin.ems.entity.Emp">
+		update emp 
+		set empname=#{empName},salary=#{salary,jdbcType=DOUBLE},job=#{job,jdbcType=VARCHAR},dept_id=#{dept_id} 
+		where empid=#{empId}
+	</update>
+	
+	<select id="findById" parameterType="string" resultType="com.yulin.ems.entity.Emp">
+		select * from emp where empid=#{empid}
+	</select>
+	 	
+	<select id="findEmpByDeptno" resultType="int">
+		select count(*) from emp where emp.dept_id=#{deptno}
+	</select> 	
+	
+	<select id="selectEmpName" parameterType="String" resultType="com.yulin.ems.entity.Emp">
+		select * from emp where empname like #{empName}
+	</select>
+	
+	<select id="selectEmpJob" parameterType="String" resultType="com.yulin.ems.entity.Emp">
+		select * from emp where job like #{empJob}
+	</select>
+</mapper>
+
+
+ 	
+ 	
+ 	
+ 	
+ 	
+ 	
+ 	
+ 

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"      
+ "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+
+<mapper namespace="com.yulin.ems.dao.DeptDao">
+	<insert id="addDept" parameterType="com.yulin.ems.entity.Dept">
+		insert into dept 
+		values(#{deptno},#{deptname,jdbcType=VARCHAR},#{dept_person,jdbcType=VARCHAR})
+	</insert>
+	
+	<select id="findAllDept" resultType="com.yulin.ems.entity.Dept">
+		select * from dept
+	</select>
+	
+	<select id="findDeptByDeptno" parameterType="int" resultType="com.yulin.ems.entity.Dept">
+		select * from dept where deptno=#{deptno}
+	</select>
+</mapper>
